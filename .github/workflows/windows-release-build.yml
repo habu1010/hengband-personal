@@ -39,3 +39,4 @@ jobs:
           asset_path: ./Hengband-Test.zip
           asset_name: Hengband-upload-name.zip
           asset_content_type: application/zip
+          
