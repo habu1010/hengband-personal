@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Setup MSBuild
+        uses: warrenbuckley/Setup-MSBuild@v1
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
           PowerShell -ExecutionPolicy RemoteSigned .\Build-Windows-Release-Package.ps1 -Version Test
