@@ -29,6 +29,8 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 
+concptr screen_dump = NULL;
+
 #ifdef WORLD_SCORE
 #ifdef WINDOWS
 #include <winsock.h>

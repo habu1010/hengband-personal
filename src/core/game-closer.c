@@ -28,6 +28,7 @@ static void clear_floor(player_type *player_ptr)
 
 static void send_world_score_on_closing(player_type *player_ptr, bool do_send)
 {
+#ifdef WORLD_SCORE
     if (send_world_score(player_ptr, do_send, update_playtime, display_player))
         return;
 
@@ -39,6 +40,7 @@ static void send_world_score_on_closing(player_type *player_ptr, bool do_send)
     player_ptr->is_dead = FALSE;
     if (!save_player(player_ptr))
         msg_print(_("セーブ失敗！", "death save failed!"));
+#endif
 }
 
 

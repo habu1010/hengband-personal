@@ -122,6 +122,7 @@ static void send_waiting_record(player_type *player_ptr)
 
     /* 町名消失バグ対策(#38205)のためここで世界マップ情報を読み出す */
     parse_fixed_map(player_ptr, "w_info.txt", 0, 0, current_world_ptr->max_wild_y, current_world_ptr->max_wild_x);
+#ifdef WORLD_SCORE
     bool success = send_world_score(player_ptr, TRUE, update_playtime, display_player);
     if (!success && !get_check_strict(player_ptr, _("スコア登録を諦めますか？", "Do you give up score registration? "), CHECK_NO_HISTORY)) {
         prt(_("引き続き待機します。", "standing by for future registration..."), 0, 0);
@@ -132,6 +133,7 @@ static void send_waiting_record(player_type *player_ptr)
         if (!save_player(player_ptr))
             msg_print(_("セーブ失敗！", "death save failed!"));
     }
+#endif
 
     (void)fd_close(highscore_fd);
     highscore_fd = -1;
